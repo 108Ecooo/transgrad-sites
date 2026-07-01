@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ТРАНСГРАД — Логистика устойчивых решений</title>
+  <meta name="description" content="ТРАНСГРАД — международный логистический оператор. Организация международных автотранспортных перевозок для бизнеса." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ░░░ Индикатор прогресса скролла ░░░ -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ░░░ Интро-анимация «транспорт разъезжается» ░░░ -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <span class="intro__line intro__line--1"></span>
+    <span class="intro__line intro__line--2"></span>
+    <span class="intro__line intro__line--3"></span>
+    <div class="intro__panel intro__panel--l">
+      <!-- проработанная иллюстрация грузовика: красный кузов + синяя кабина -->
+      <svg class="intro__truck" viewBox="0 0 240 140" aria-hidden="true">
+        <!-- тень под машиной -->
+        <ellipse cx="120" cy="123" rx="106" ry="7" fill="#0f2647" opacity=".12"/>
+        <!-- кузов (фургон) -->
+        <rect x="8" y="24" width="150" height="78" rx="8" fill="#e11b22"/>
+        <rect x="8" y="24" width="150" height="13" rx="8" fill="#ff5257" opacity=".5"/>
+        <rect x="8" y="88" width="150" height="14" rx="8" fill="#b3141a"/>
+        <!-- швы боковых панелей -->
+        <line x1="55" y1="30" x2="55" y2="96" stroke="#b3141a" stroke-width="2.2"/>
+        <line x1="102" y1="30" x2="102" y2="96" stroke="#b3141a" stroke-width="2.2"/>
+        <!-- фирменный знак-стрелки на борту -->
+        <rect x="19" y="50" width="26" height="22" rx="4" fill="#ffffff" opacity=".95"/>
+        <path d="M25 61h13m0 0l-4-4m4 4l-4 4" stroke="#16335f" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- кабина -->
+        <path d="M158 42h22l23 16c3.5 2.5 5 5.5 5 10v34h-50z" fill="#16335f"/>
+        <path d="M158 88h50v14h-50z" fill="#0f2647"/>
+        <!-- лобовое и боковое стекло -->
+        <path d="M182 50h13l14 10h-27z" fill="#bcd0ee"/>
+        <rect x="163" y="50" width="14" height="18" rx="2.5" fill="#bcd0ee"/>
+        <!-- фара + бампер -->
+        <rect x="201" y="74" width="9" height="8" rx="2" fill="#ffd36b"/>
+        <rect x="205" y="92" width="6" height="14" rx="2" fill="#0b1d3a"/>
+        <!-- колёса с дисками -->
+        <circle cx="68" cy="104" r="17" fill="#141f33"/>
+        <circle cx="68" cy="104" r="16.2" fill="none" stroke="#33456a" stroke-width="2"/>
+        <circle cx="68" cy="104" r="7" fill="#e6ebf3"/><circle cx="68" cy="104" r="2.7" fill="#141f33"/>
+        <circle cx="184" cy="104" r="17" fill="#141f33"/>
+        <circle cx="184" cy="104" r="16.2" fill="none" stroke="#33456a" stroke-width="2"/>
+        <circle cx="184" cy="104" r="7" fill="#e6ebf3"/><circle cx="184" cy="104" r="2.7" fill="#141f33"/>
+      </svg>
+    </div>
+    <div class="intro__panel intro__panel--r">
+      <!-- аккуратный силуэт самолёта (как у курсора), синий с красным носом -->
+      <svg class="intro__plane" viewBox="0 0 512 512" aria-hidden="true">
+        <path d="M256 24c-13 0-23 29-23 71v54L44 270c-4 2-6 6-6 10v34c0 6 6 11 12 9l183-53v98l-45 34c-3 2-5 6-5 9v27c0 5 5 9 10 8l63-16 63 16c5 1 10-3 10-8v-27c0-3-2-7-5-9l-45-34v-98l183 53c6 2 12-3 12-9v-34c0-4-2-8-6-10L279 149V95c0-42-10-71-23-71z" fill="#16335f"/>
+        <path d="M256 24c-9 0-16 13-19 34l19-6 19 6c-3-21-10-34-19-34z" fill="#e11b22"/>
+      </svg>
+    </div>
+    <div class="intro__center">
+      <img class="intro__logo-img" src="assets/logo.png" alt="ТРАНСГРАД" />
+      <div class="intro__hint" id="introHint">Прокрутите, чтобы войти</div>
+    </div>
+  </div>
+
+  <!-- ░░░ Хедер ░░░ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#hero" class="header__logo" aria-label="ТРАНСГРАД">
+        <img src="assets/logo.png" alt="ТРАНСГРАД — международные перевозки" />
+      </a>
+      <nav class="header__nav">
+        <a href="#about">О компании</a>
+        <a href="#advantages">Преимущества</a>
+        <a href="#geography">География</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <button class="btn btn--ghost header__cta" data-modal-open>Заказать звонок</button>
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ░░░ Hero ░░░ -->
+  <section class="hero" id="hero">
+    <canvas class="hero__canvas" id="net"></canvas>
+    <canvas class="hero__obj" id="heroObj" aria-hidden="true"></canvas>
+    <div class="hero__glow hero__glow--red"></div>
+    <div class="hero__glow hero__glow--blue"></div>
+    <div class="hero__ghost" aria-hidden="true">TG</div>
+
+    <div class="container hero__content">
+      <div class="hero__eyebrow" data-reveal>
+        <span class="hero__eyebrow-line"></span>
+        <span>Международный логистический оператор</span>
+        <span class="hero__eyebrow-sep">/</span>
+        <span>Европа · Закавказье · Азия</span>
+      </div>
+
+      <h1 class="hero__title" data-reveal>
+        <span class="line">Мы&nbsp;играем</span>
+        <span class="line">в&nbsp;<em>другой</em>&nbsp;лиге</span>
+      </h1>
+
+      <p class="hero__lead" data-reveal>
+        Международные перевозки для тех, кто привык доверять серьёзным.
+      </p>
+
+      <div class="hero__actions" data-reveal>
+        <button class="btn-route btn-route--hero" data-modal-open data-magnetic aria-label="Заказать звонок">
+          <span class="btn-route__top">
+            <span>Заказать звонок</span>
+            <svg class="btn-route__arrow" viewBox="0 0 24 24" width="17" height="17" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="btn-route__track" aria-hidden="true">
+            <svg class="btn-route__road" viewBox="0 0 200 8" preserveAspectRatio="none"><line class="road-base" x1="6" y1="4" x2="168" y2="4"/><line class="road-lit" x1="6" y1="4" x2="168" y2="4"/></svg>
+            <span class="btn-route__origin"></span>
+            <span class="btn-route__dest"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.3" fill="currentColor"/></svg></span>
+            <span class="btn-route__truck"><svg viewBox="0 0 40 22" width="30" height="17" fill="currentColor"><rect x="1" y="4" width="21" height="11" rx="1.4"/><rect x="1" y="10.6" width="21" height="2" fill="#e11b22"/><path d="M23 7h5.4l4.2 4V15H23z"/><rect x="28.4" y="7.8" width="3.8" height="2.6" rx=".5" fill="#0C1860"/><circle cx="9" cy="16.5" r="2.7" fill="#0C1860"/><circle cx="9" cy="16.5" r="1.1" fill="#fff"/><circle cx="27" cy="16.5" r="2.7" fill="#0C1860"/><circle cx="27" cy="16.5" r="1.1" fill="#fff"/></svg></span>
+          </span>
+        </button>
+        <a href="#manifest" class="btn btn--text">Узнать о подходе</a>
+      </div>
+    </div>
+
+    <a href="#manifest" class="hero__scroll" aria-label="Вниз">
+      <span class="hero__scroll-line"></span>
+      <span>Scroll</span>
+    </a>
+  </section>
+
+  <!-- ░░░ Блок «О компании» — 3 статьи + слово директора ░░░ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <span class="section-head__tag" data-reveal>О компании</span>
+        <h2 class="section-head__title" data-reveal>Живая логистика,<br/>а&nbsp;не&nbsp;строчка в&nbsp;прайсе</h2>
+      </div>
+
+      <div class="about__grid">
+        <!-- Карточка директора. ЗАМЕНИТЕ: положите портрет в assets/director.jpg (≈800×1000)
+             и укажите реальные ФИО ниже. Пока показан аккуратный плейсхолдер. -->
+        <article class="about__card about__card--lead" data-reveal data-tilt>
+          <div class="about__photo">
+            <img src="assets/director.jpg" alt="Генеральный директор ТРАНСГРАД"
+                 onerror="this.closest('.about__photo').classList.add('is-empty');this.remove()" />
+            <svg class="about__photo-ph" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.7 0 4.8-2.2 4.8-4.9S14.7 2.2 12 2.2 7.2 4.4 7.2 7.1 9.3 12 12 12zm0 2.4c-4.3 0-9 2.2-9 5.3V22h18v-2.3c0-3.1-4.7-5.3-9-5.3z"/></svg>
+          </div>
+          <div class="about__lead-body">
+            <span class="about__kicker">Слово директора</span>
+            <p class="about__quote">«Логистика — это про доверие. Мы не обещаем невозможного, но если взяли груз, доведём его до места, как будто он наш собственный. За каждым маршрутом стоят люди, которые не спят, пока машина в пути.»</p>
+            <div class="about__person">
+              <span class="about__name">Алексей&nbsp;Громов</span>
+              <span class="about__role">генеральный директор «ТРАНСГРАД»</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="about__card" data-reveal data-tilt>
+          <span class="about__kicker">История</span>
+          <h3 class="about__title">С чего всё началось</h3>
+          <p class="about__text">ТРАНСГРАД вырос из простой идеи — возить честно и довозить вовремя. Начинали с нескольких направлений, а сегодня строим маршруты через всю Евразию. Подход остался прежним: относиться к чужому грузу так, будто он свой.</p>
+        </article>
+
+        <article class="about__card" data-reveal data-tilt>
+          <span class="about__kicker">Принципы</span>
+          <h3 class="about__title">Почему нам доверяют</h3>
+          <p class="about__text">Мы беремся за то, от чего отказываются другие: сложные направления, меняющиеся правила, сжатые сроки. Клиенты остаются с нами годами не из-за красивых слов, а потому что мы держим слово — рейс за рейсом.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ Блок 1 — Манифест (кинетическая типографика) ░░░ -->
+  <section class="manifest" id="manifest">
+    <div class="container">
+      <p class="manifest__line" data-manifest>
+        <span>Там, где другие</span> <span>останавливаются —</span>
+        <em>мы&nbsp;строим маршрут.</em>
+      </p>
+      <p class="manifest__line" data-manifest>
+        <span>Контракты,</span> <span>которым доверяют</span>
+        <em>годами.</em>
+      </p>
+      <p class="manifest__line" data-manifest>
+        <span>Масштаб,</span> <span>который чувствуется</span>
+        <em>с&nbsp;первой минуты.</em>
+      </p>
+    </div>
+
+    <!-- Бегущая строка географии (ощущение масштаба без цифр) -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Европа</span><span class="marquee__dot"></span>
+        <span>Турция</span><span class="marquee__dot"></span>
+        <span>Иран</span><span class="marquee__dot"></span>
+        <span>Закавказье</span><span class="marquee__dot"></span>
+        <span>Центральная Азия</span><span class="marquee__dot"></span>
+        <span>Монголия</span><span class="marquee__dot"></span>
+        <span>Китай</span><span class="marquee__dot"></span>
+        <span>Европа</span><span class="marquee__dot"></span>
+        <span>Турция</span><span class="marquee__dot"></span>
+        <span>Иран</span><span class="marquee__dot"></span>
+        <span>Закавказье</span><span class="marquee__dot"></span>
+        <span>Центральная Азия</span><span class="marquee__dot"></span>
+        <span>Монголия</span><span class="marquee__dot"></span>
+        <span>Китай</span><span class="marquee__dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ Блок 2 — Преимущества (минимализм, строки) ░░░ -->
+  <section class="advantages" id="advantages">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <span class="section-head__tag" data-reveal>Наш подход</span>
+        <h2 class="section-head__title" data-reveal>Почему&nbsp;<em>ТРАНСГРАД</em></h2>
+      </div>
+
+      <div class="adv-list">
+        <article class="adv-row" data-reveal data-tilt>
+          <span class="adv-row__num">01</span>
+          <div class="adv-row__icon">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M6 16l18-9 18 9-18 9-18-9z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M6 16v16l18 9 18-9V16M24 25v16" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="adv-row__body">
+            <h3 class="adv-row__title">Весь путь груза — в одном окне</h3>
+            <p class="adv-row__text">Транспорт, документы и таможня под единым управлением.</p>
+          </div>
+        </article>
+
+        <article class="adv-row" data-reveal data-tilt>
+          <span class="adv-row__num">02</span>
+          <div class="adv-row__icon">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M8 34c8 0 8-20 16-20s8 20 16 20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="8" cy="34" r="3.4" stroke="currentColor" stroke-width="2.2"/><circle cx="40" cy="34" r="3.4" stroke="currentColor" stroke-width="2.2"/></svg>
+          </div>
+          <div class="adv-row__body">
+            <h3 class="adv-row__title">Маршруты там, где их нет у других</h3>
+            <p class="adv-row__text">Перестраиваем логистику под любые ограничения.</p>
+          </div>
+        </article>
+
+        <article class="adv-row" data-reveal data-tilt>
+          <span class="adv-row__num">03</span>
+          <div class="adv-row__icon">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M24 6v36M14 16l10-10 10 10M33 32l-9 9-9-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="adv-row__body">
+            <h3 class="adv-row__title">Баланс цены и скорости</h3>
+            <p class="adv-row__text">Лучшее решение без потери надёжности.</p>
+          </div>
+        </article>
+
+        <article class="adv-row" data-reveal data-tilt>
+          <span class="adv-row__num">04</span>
+          <div class="adv-row__icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="9" stroke="currentColor" stroke-width="2.2"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M10 10l4 4M34 34l4 4M38 10l-4 4M14 34l-4 4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="adv-row__body">
+            <h3 class="adv-row__title">Контроль на каждом этапе</h3>
+            <p class="adv-row__text">Вы всегда знаете, где находится ваша поставка.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ Блок 3 — География перевозок (3D-глобус) ░░░ -->
+  <section class="geography" id="geography">
+    <div class="container geo__layout">
+      <div class="geo__text">
+        <span class="section-head__tag" data-reveal>География перевозок</span>
+        <h2 class="section-head__title" data-reveal>Маршруты <em>без&nbsp;границ</em></h2>
+        <p class="section-head__sub" data-reveal>
+          От России до Европы и Азии. Наведите на направление&nbsp;— и&nbsp;маршрут подсветится на&nbsp;глобусе.
+        </p>
+
+        <ul class="geo__list" data-reveal>
+          <li class="geo__item is-active" data-route="0">
+            <span class="geo__dot"></span>
+            <span class="geo__name">Восточная и Западная Европа</span>
+            <span class="geo__arrow">→</span>
+          </li>
+          <li class="geo__item" data-route="1">
+            <span class="geo__dot"></span>
+            <span class="geo__name">Закавказье, Турция и Иран</span>
+            <span class="geo__arrow">→</span>
+          </li>
+          <li class="geo__item" data-route="2">
+            <span class="geo__dot"></span>
+            <span class="geo__name">Центральная Азия</span>
+            <span class="geo__arrow">→</span>
+          </li>
+          <li class="geo__item" data-route="3">
+            <span class="geo__dot"></span>
+            <span class="geo__name">Монголия и Китай</span>
+            <span class="geo__arrow">→</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="geo__globe" data-reveal>
+        <canvas id="globe"></canvas>
+        <div class="geo__globe-hint">Перетащите, чтобы вращать</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ Финальный CTA / Контакты ░░░ -->
+  <section class="cta" id="contact">
+    <div class="container cta__inner">
+      <h2 class="cta__title" data-reveal>Поговорим<br/>на одном языке?</h2>
+      <p class="cta__sub" data-reveal>Рассчитаем маршрут и стоимость международной перевозки в течение рабочего дня.</p>
+      <div class="cta__actions" data-reveal>
+        <span class="cta__label">Прямая линия</span>
+        <a href="tel:+79108944808" class="cta__phone" data-magnetic>+7 (910) 894-48-08</a>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container footer__inner">
+        <img src="assets/logo-hero.png" alt="ТРАНСГРАД" class="footer__logo" />
+        <div class="footer__meta">
+          <span>ООО «ТРАНСГРАД» · Международные перевозки</span>
+          <span>г. Нижний Новгород, Московское шоссе, 12 · info@transgrad.com</span>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+  <!-- ░░░ Модалка «Заказать звонок» ░░░ -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__card" role="dialog" aria-modal="true" aria-label="Заказать звонок">
+      <button class="modal__close" data-modal-close aria-label="Закрыть">×</button>
+      <h3 class="modal__title">Заказать звонок</h3>
+      <p class="modal__sub">Оставьте контакты — перезвоним и рассчитаем маршрут.</p>
+      <form class="modal__form" id="callForm">
+        <label class="field"><span>Имя</span><input type="text" name="name" required placeholder="Как к вам обращаться" /></label>
+        <label class="field"><span>Телефон</span><input type="tel" name="phone" required placeholder="+7 (___) ___-__-__" /></label>
+        <label class="field"><span>ИНН компании</span><input type="text" name="inn" required inputmode="numeric" pattern="\d{10}" maxlength="10" title="ИНН юридического лица — 10 цифр" placeholder="10 цифр" /></label>
+        <button type="submit" class="btn btn--primary btn--block">Отправить заявку</button>
+        <p class="modal__note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+      </form>
+      <div class="modal__success" id="modalSuccess">
+        <div class="modal__success-ico">✓</div>
+        <h3>Заявка отправлена!</h3>
+        <p>Менеджер ТРАНСГРАД свяжется с вами в ближайшее время.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ░░░ Скрипты ░░░ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <!-- three.js подключаем классическим скриптом (глобальный THREE) — работает и при открытии файла напрямую (file://) -->
+  <script src="https://unpkg.com/three@0.159.0/build/three.min.js"></script>
+  <script src="js/globe.js"></script>
+  <script src="js/hero3d.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
