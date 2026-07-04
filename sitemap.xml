@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ЗАМЕНИТЬ transgrad.ru на реальный домен -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://transgrad.ru/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://transgrad.ru/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://transgrad.ru/en/" />
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://transgrad.ru/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://transgrad.ru/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://transgrad.ru/en/" />
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://transgrad.ru/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://transgrad.ru/blog/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://transgrad.ru/en/blog/" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://transgrad.ru/en/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://transgrad.ru/blog/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://transgrad.ru/en/blog/" />
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://transgrad.ru/blog/slovo-direktora.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://transgrad.ru/blog/slovo-direktora.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://transgrad.ru/en/blog/directors-letter.html" />
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://transgrad.ru/en/blog/directors-letter.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://transgrad.ru/blog/slovo-direktora.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://transgrad.ru/en/blog/directors-letter.html" />
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://transgrad.ru/blog/granitsy.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://transgrad.ru/blog/granitsy.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://transgrad.ru/en/blog/border-crossings.html" />
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://transgrad.ru/en/blog/border-crossings.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://transgrad.ru/blog/granitsy.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://transgrad.ru/en/blog/border-crossings.html" />
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://transgrad.ru/blog/pogodnye-usloviya.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://transgrad.ru/blog/pogodnye-usloviya.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://transgrad.ru/en/blog/severe-weather.html" />
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://transgrad.ru/en/blog/severe-weather.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://transgrad.ru/blog/pogodnye-usloviya.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://transgrad.ru/en/blog/severe-weather.html" />
+    <priority>0.6</priority>
+  </url>
+</urlset>

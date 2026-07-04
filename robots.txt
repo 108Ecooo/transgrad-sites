@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# ЗАМЕНИТЬ transgrad.ru на реальный домен
+Sitemap: https://transgrad.ru/sitemap.xml

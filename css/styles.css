@@ -296,7 +296,7 @@ h1, h2, h3, h4 {
 .mobile-menu__lang .is-current { background: var(--red); box-shadow: none; }
 
 /* ============================================================
-   HERO — стыковка логотипа + кинетическая типографика
+   HERO �� стыковка логотипа + кинетическая типографика
    ============================================================ */
 .hero {
   position: relative;
@@ -811,10 +811,11 @@ h1, h2, h3, h4 {
 .article-hero .stripe { height: 58px; }
 .article-hero__inner { position: relative; z-index: 2; max-width: 900px; }
 .article-hero__title {
-  font-size: clamp(38px, 6vw, 76px);
+  font-size: clamp(30px, 6vw, 76px);
   margin-top: 22px;
   color: var(--white);
   text-wrap: balance;
+  overflow-wrap: break-word;
 }
 .article-hero__lead {
   margin-top: 26px;
@@ -1047,13 +1048,18 @@ h1, h2, h3, h4 {
   border-color: var(--navy);
 }
 .field input.is-invalid { border-color: var(--red); }
-.field__error {
+.field > span.field__error {
   display: none;
   font-size: 13px;
+  font-family: var(--font-body);
+  font-stretch: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
   color: var(--red);
   margin-top: 6px;
 }
-.field input.is-invalid ~ .field__error { display: block; }
+.field input.is-invalid ~ span.field__error { display: block; }
 .form-card__note {
   margin-top: 16px;
   font-size: 13px;
